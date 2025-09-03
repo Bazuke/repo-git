@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Justicia para Daniel y Juana — Demo</title>
+  <style>
+    :root{
+      --bg:#0e1116;--panel:#121723;--muted:#8ea1b2;--text:#e9eef3;--brand:#7dd3fc;--brand-2:#60a5fa;--accent:#a78bfa;--ok:#22c55e;--warn:#f59e0b;--danger:#ef4444;
+      --radius:18px;--radius-sm:12px;--shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(1200px 600px at 10% -10%,rgba(96,165,250,.18),transparent 50%),
+                      radial-gradient(900px 600px at 110% 10%,rgba(167,139,250,.15),transparent 60%),
+                      linear-gradient(180deg,#0b0f15,#0e1116 30%);
+         color:var(--text);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif}
+    header{position:sticky;top:0;backdrop-filter:saturate(1.2) blur(8px);background:rgba(14,17,22,.65);border-bottom:1px solid rgba(255,255,255,.06);z-index:30}
+    .container{max-width:1100px;margin:auto;padding:24px}
+    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:28px 0}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(125,211,252,.12);border:1px solid rgba(125,211,252,.35);color:var(--brand);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+    h1{font-size:clamp(28px,5vw,42px);line-height:1.1;margin:14px 0 14px}
+    p.lead{font-size:clamp(16px,2.2vw,19px);color:var(--muted)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .btn{appearance:none;border:0;border-radius:14px;padding:12px 16px;font-weight:700;cursor:pointer;transition:transform .08s ease, box-shadow .2s ease, background .2s ease;color:#0b0f15}
+    .btn-primary{background:linear-gradient(180deg,var(--brand),var(--brand-2));box-shadow:0 10px 24px rgba(96,165,250,.35)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.18)}
+    .btn:active{transform:translateY(1px)}
+
+    /* Form */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .full{grid-column:1 / -1}
+    label{display:block;margin:0 0 8px;font-weight:700;color:#cfe4f7}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:var(--text)}
+    input::placeholder,textarea::placeholder{color:#9fb1c1}
+    .field{display:flex;flex-direction:column}
+    .muted{color:var(--muted);font-size:14px}
+    .lite{font-weight:600;color:#cde3f7}
+    .panel{padding:20px}
+
+    .donate{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:linear-gradient(180deg,rgba(34,197,94,.08),rgba(34,197,94,.05));border:1px solid rgba(34,197,94,.24)}
+
+    .sig-wrap{position:relative;border-radius:12px;border:1px dashed rgba(255,255,255,.25);overflow:hidden}
+    #signature{display:block;width:100%;height:180px;background:rgba(255,255,255,.05);cursor:crosshair}
+    .sig-tools{display:flex;gap:10px;margin-top:8px}
+
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+    .faq{display:grid;gap:12px}
+    details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px}
+    summary{cursor:pointer;font-weight:700}
+
+    footer{border-top:1px solid rgba(255,255,255,.08);margin-top:38px}
+
+    .notice{font-size:13px;color:#b6c6d4}
+
+    @media (max-width: 880px){
+      .hero{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;gap:16px;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="badge" aria-hidden="true">Justicia para Daniel</div>
+        <strong>Campaña solidaria</strong>
+      </div>
+      <nav style="display:flex;gap:12px">
+        <a class="btn btn-outline" href="#firma">Firmar</a>
+        <a class="btn btn-primary" href="#donar">Donar 2€</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="badge">Acción inmediata</span>
+        <h1>Protejamos a la infancia. <span style="background:linear-gradient(90deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent">Justicia para Daniel y Juana</span></h1>
+        <p class="lead">Esta es una <strong>demostración de mockup</strong> sin backend: no envía ni almacena datos. Sirve para visualizar el diseño de una página de campaña con firma, subida de vídeo y botón de donación simbólica.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#firma">Quiero firmar</a>
+          <a class="btn btn-outline" href="#faq">Saber más</a>
+        </div>
+      </div>
+      <div class="card panel">
+        <video controls muted style="width:100%;border-radius:12px;outline:none">
+          <source src="" type="video/mp4" />
+        </video>
+        <p class="muted" style="margin:10px 0 0">Espacio para un vídeo de la campaña (opcional).</p>
+      </div>
+    </section>
+
+    <section id="firma" class="card panel" aria-labelledby="form-title">
+      <h2 id="form-title" style="margin-top:0">Súmate con tu firma</h2>
+      <p class="muted">Completa el formulario. En un despliegue real, aquí irían la política de privacidad, base jurídica (consentimiento) y tratamiento de datos conforme al RGPD.</p>
+
+      <form onsubmit="event.preventDefault(); alert('Demo: no se envían datos.');" autocomplete="on">
+        <div class="field"><label for="nombre">Nombre</label><input id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="given-name"></div>
+        <div class="field"><label for="apellidos">Apellidos</label><input id="apellidos" name="apellidos" placeholder="Tus apellidos" required autocomplete="family-name"></div>
+
+        <!-- DNI EN MISMA FILA QUE EMAIL (2 columnas) -->
+        <div class="field"><label for="dni">DNI</label>
+          <input id="dni" name="dni" placeholder="00000000X" required maxlength="9" pattern="^[0-9]{8}[A-Za-z]$" title="Formato DNI: 8 dígitos y una letra (p. ej., 12345678Z)" autocomplete="off">
+        </div>
+        <div class="field"><label for="email">Correo electrónico</label><input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required autocomplete="email"></div>
+
+        <div class="field full"><label for="direccion">Dirección</label><input id="direccion" name="direccion" placeholder="Calle, número, piso, ciudad, C.P." autocomplete="street-address"></div>
+
+        <div class="full">
+          <label class="lite">Firma</label>
+          <div class="sig-wrap">
+            <canvas id="signature" aria-label="Área para firmar con el ratón o dedo"></canvas>
+          </div>
+          <div class="sig-tools">
+            <button class="btn btn-outline" type="button" id="sig-undo">Deshacer trazo</button>
+            <button class="btn btn-outline" type="button" id="sig-clear">Limpiar</button>
+            <button class="btn btn-primary" type="button" id="sig-download">Descargar firma</button>
+          </div>
+          <p class="notice">Consejo: firma con el dedo en móvil o con el ratón en escritorio.</p>
+        </div>
+
+        <div class="full">
+          <label for="video">Sube aquí tu vídeo de apoyo con el eslogan <em>“Yo estoy con Juana Rivas”</em></label>
+          <input id="video" name="video" type="file" accept="video/*">
+          <p class="notice">(Demo) El archivo no se sube. En producción, valida formato/tamaño y muestra barra de progreso.</p>
+        </div>
+
+        <div class="full donate" id="donar">
+          <input id="donacion" type="checkbox" checked aria-describedby="donate-help">
+          <label for="donacion" style="margin:0;font-weight:800">Apoyar la campaña donando 2€</label>
+          <span id="donate-help" class="muted">La donación es simbólica en esta demo. El botón redirige a #.</span>
+          <a href="#" class="btn btn-primary" style="margin-left:auto">Donar 2€</a>
+        </div>
+
+        <div class="full" style="display:flex;gap:10px;align-items:flex-start">
+          <input id="consent" type="checkbox" required>
+          <label for="consent" class="muted">Doy mi consentimiento para el tratamiento de mis datos con la finalidad de gestionar mi firma y mi apoyo a la campaña. He leído la <a href="#" style="color:var(--brand)">Política de Privacidad</a> y los <a href="#" style="color:var(--brand)">Términos</a>.</label>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn btn-primary" type="submit">Enviar firma</button>
+          <button class="btn btn-outline" type="reset">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="faq" class="grid" aria-labelledby="faq-title" style="margin-top:24px">
+      <div class="card panel">
+        <h3 id="faq-title" style="margin-top:0">Preguntas frecuentes</h3>
+        <div class="faq">
+          <details><summary>¿Se almacenan mis datos en esta página?</summary><p class="muted">No. Este es un <strong>mockup</strong> de demostración; no hay backend ni almacenamiento. Para un proyecto real, se requeriría servidor seguro (HTTPS), base de datos, y cumplimiento RGPD.</p></details>
+          <details><summary>¿Cómo se procesa la donación?</summary><p class="muted">Aquí es decorativo. En producción, integra un proveedor de pagos verificado (p.ej., Stripe) con cargos de 2€ y recibo.</p></details>
+          <details><summary>¿Qué formato de vídeo se admite?</summary><p class="muted">MP4, MOV, WEBM, hasta 200 MB (ejemplo). Mostrarías validación y barra de progreso.</p></details>
+        </div>
+      </div>
+      <div class="card panel">
+        <h3 style="margin-top:0">Transparencia y privacidad</h3>
+        <ul class="muted">
+          <li>Base jurídica: consentimiento expreso (art. 6.1.a RGPD).</li>
+          <li>Finalidad: gestión de firmas y apoyos a la campaña.</li>
+          <li>Derechos: acceso, rectificación, supresión, oposición, limitación y portabilidad.</li>
+          <li>Medidas: cifrado en tránsito (TLS), minimización de datos, retención limitada.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="container" style="padding:18px 0 40px">
+      <p class="notice">© 2025 — Demo de interfaz. Este prototipo no representa a ninguna entidad real y no recauda fondos.</p>
+    </footer>
+  </main>
+
+  <script>
+    // Simple signature pad (vanilla JS)
+    (function(){
+      const canvas = document.getElementById('signature');
+      const ctx = canvas.getContext('2d');
+      let drawing = false, points = [], strokes = [];
+
+      function resize(){
+        const prev = canvas.toDataURL();
+        const img = new Image();
+        img.src = prev;
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        img.onload = ()=> ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      }
+      new ResizeObserver(resize).observe(canvas);
+
+      function pos(e){
+        const r = canvas.getBoundingClientRect();
+        const x = (e.touches? e.touches[0].clientX : e.clientX) - r.left;
+        const y = (e.touches? e.touches[0].clientY : e.clientY) - r.top;
+        return {x, y};
+      }
+
+      function start(e){ drawing=true; points=[pos(e)]; e.preventDefault(); }
+      function move(e){ if(!drawing) return; points.push(pos(e)); draw(); e.preventDefault(); }
+      function end(){ if(!drawing) return; drawing=false; strokes.push(points.slice()); points=[]; }
+
+      function draw(){
+        if(points.length<2) return;
+        ctx.lineJoin='round'; ctx.lineCap='round'; ctx.strokeStyle='#e9eef3'; ctx.lineWidth=2.2;
+        ctx.beginPath();
+        for(let i=0;i<points.length-1;i++){
+          const p1=points[i], p2=points[i+1];
+          ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y);
+        }
+        ctx.stroke();
+      }
+
+      canvas.addEventListener('mousedown', start);
+      canvas.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', end);
+      canvas.addEventListener('touchstart', start, {passive:false});
+      canvas.addEventListener('touchmove', move, {passive:false});
+      window.addEventListener('touchend', end);
+
+      document.getElementById('sig-clear').onclick = ()=>{ ctx.clearRect(0,0,canvas.width,canvas.height); strokes=[]; };
+      document.getElementById('sig-undo').onclick = ()=>{
+        if(!strokes.length) return; strokes.pop();
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        // redraw
+        ctx.lineJoin='round'; ctx.lineCap='round'; ctx.strokeStyle='#e9eef3'; ctx.lineWidth=2.2;
+        strokes.forEach(s=>{ ctx.beginPath(); for(let i=0;i<s.length-1;i++){ ctx.moveTo(s[i].x,s[i].y); ctx.lineTo(s[i+1].x,s[i+1].y);} ctx.stroke(); });
+      };
+      document.getElementById('sig-download').onclick = ()=>{
+        const a = document.createElement('a');
+        a.href = canvas.toDataURL('image/png');
+        a.download = 'firma-demo.png';
+       
